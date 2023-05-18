@@ -11,6 +11,7 @@ package ec.edu.ups.est.practica_tres.vista;
 import ec.edu.ups.est.practica_tres.controlador.ControladorPersona;
 import ec.edu.ups.est.practica_tres.modelo.Cantante;
 import ec.edu.ups.est.practica_tres.modelo.Compositor;
+import ec.edu.ups.est.practica_tres.modelo.Disco;
 import ec.edu.ups.est.practica_tres.modelo.Persona;
 import java.util.Scanner;
 

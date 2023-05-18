@@ -23,6 +23,7 @@ public class ControladorPersona {
     public ControladorPersona() {
         this.personas = new ArrayList<>();
     }
+
     public void create(Persona persona) {
         personas.add(persona);
     }
@@ -34,7 +35,7 @@ public class ControladorPersona {
         }
     }
 
-     public Cantante buscarPorNombreDeDisco(String valor) {
+    public Cantante buscarPorNombreDeDisco(String valor) {
         for (Persona persona : personas) {
             if (persona instanceof Cantante) {
                 Cantante cantante = (Cantante) persona;
@@ -75,5 +76,35 @@ public class ControladorPersona {
         return null;
     }
 
-    
+    public List<Cantante> buscarCantantePorNombreDeDisco(String nombreDisco) {
+        List<Cantante> cantantesEncontrados = new ArrayList<>();
+
+        for (Persona persona : personas) {
+            if (persona instanceof Cantante) {
+                Cantante cantante = (Cantante) persona;
+                if (cantante.tieneDisco(nombreDisco)) {
+                    cantantesEncontrados.add(cantante);
+                }
+            }
+        }
+
+        return cantantesEncontrados;
+    }
+
+
+    public List<Compositor> buscarCompositorPorNombreDeCancion(String nombreCancion) {
+        List<Compositor> compositoresEncontrados = new ArrayList<>();
+
+        for (Persona persona : personas) {
+            if (persona instanceof Compositor) {
+                Compositor compositor = (Compositor) persona;
+                if (compositor.tieneCancion(nombreCancion)) {
+                    compositoresEncontrados.add(compositor);
+                }
+            }
+        }
+
+        return compositoresEncontrados;
+    }
+
 }

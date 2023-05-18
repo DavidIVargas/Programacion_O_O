@@ -10,6 +10,7 @@ package ec.edu.ups.est.practica_tres.vista;
  */
 import ec.edu.ups.est.practica_tres.controlador.ControladorPersona;
 import ec.edu.ups.est.practica_tres.modelo.Cantante;
+import ec.edu.ups.est.practica_tres.modelo.Disco;
 import ec.edu.ups.est.practica_tres.modelo.Persona;
 import java.util.Scanner;
 
@@ -54,8 +55,20 @@ public class VistaCantante {
         System.out.print("Ingrese el número de giras: ");
         int numeroDeGiras = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
-
-        Cantante cantante = new Cantante(codigo, nombre, apellido, edad, nacionalidad, salario, nombreArtistico, generoMusical, numeroDeSencillos, numeroDeConciertos, numeroDeGiras);
+        //disco
+       System.out.println("Ingrese el codigo de disco: ");
+       int codigoC = scanner.nextInt();
+       scanner.nextLine();
+       System.out.println("Ingrese el nombre de disco: ");
+       String nombreC = scanner.nextLine();
+       System.out.println("Ingrese el anio de lanzamiento de disco: ");
+       int anio = scanner.nextInt();
+       
+       
+       
+        
+        Disco disco = new Disco(codigoC, nombreC, anio);
+        Cantante cantante = new Cantante(codigo, nombre, apellido, edad, nacionalidad, salario, nombreArtistico, generoMusical, numeroDeSencillos, numeroDeConciertos, numeroDeGiras,disco);
         controlador.agregarPersona(cantante);
 
         System.out.println("Cantante agregado exitosamente.");

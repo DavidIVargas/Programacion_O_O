@@ -12,6 +12,7 @@ import java.util.List;
  * @author davidvargas
  */
 public class Cantante extends Persona {
+
     private String nombreArtistico;
     private String generoMusical;
     private int numeroDeSencillos;
@@ -20,8 +21,8 @@ public class Cantante extends Persona {
     private List<Disco> discografia;
 
     public Cantante(int codigo, String nombre, String apellido, int edad, String nacionalidad, double salario,
-                    String nombreArtistico, String generoMusical, int numeroDeSencillos, int numeroDeConciertos,
-                    int numeroDeGiras) {
+            String nombreArtistico, String generoMusical, int numeroDeSencillos, int numeroDeConciertos,
+            int numeroDeGiras, Disco disco) {
         super(codigo, nombre, apellido, edad, nacionalidad, salario);
         this.nombreArtistico = nombreArtistico;
         this.generoMusical = generoMusical;
@@ -29,11 +30,25 @@ public class Cantante extends Persona {
         this.numeroDeConciertos = numeroDeConciertos;
         this.numeroDeGiras = numeroDeGiras;
         this.discografia = new ArrayList<>();
+        discografia.add(disco);
     }
 
     public void agregarDisco(int codigo, String nombre, int anioDeLanzamiento) {
         Disco disco = new Disco(codigo, nombre, anioDeLanzamiento);
         discografia.add(disco);
+    }
+
+    public Cantante(int codigo, String nombre, String apellido, int edad, String nacionalidad, double salario,
+            String nombreArtistico, String generoMusical, int numeroDeSencillos, int numeroDeConciertos,
+            int numeroDeGiras) {
+        super(codigo, nombre, apellido, edad, nacionalidad, salario);
+        this.nombreArtistico = nombreArtistico;
+        this.generoMusical = generoMusical;
+        this.numeroDeSencillos = numeroDeSencillos;
+        this.numeroDeConciertos = numeroDeConciertos;
+        this.numeroDeGiras = numeroDeGiras;
+        this.discografia = new ArrayList<>();
+
     }
 
     @Override
@@ -53,8 +68,7 @@ public class Cantante extends Persona {
         return salarioFinal;
     }
 
-    // getters y setters
-
+    // Getters y setters
     public String getNombreArtistico() {
         return nombreArtistico;
     }
@@ -102,17 +116,25 @@ public class Cantante extends Persona {
     public void setDiscografia(List<Disco> discografia) {
         this.discografia = discografia;
     }
-    
 
     @Override
     public String toString() {
-        return "Cantante{" +
-                "nombreArtistico='" + nombreArtistico + '\'' +
-                ", generoMusical='" + generoMusical + '\'' +
-                ", numeroDeSencillos=" + numeroDeSencillos +
-                ", numeroDeConciertos=" + numeroDeConciertos +
-                ", numeroDeGiras=" + numeroDeGiras +
-                ", discografia=" + discografia +
-                "} " + super.toString();
+        return "Cantante{"
+                + "nombreArtistico='" + nombreArtistico + '\''
+                + ", generoMusical='" + generoMusical + '\''
+                + ", numeroDeSencillos=" + numeroDeSencillos
+                + ", numeroDeConciertos=" + numeroDeConciertos
+                + ", numeroDeGiras=" + numeroDeGiras
+                + ", discografia=" + discografia
+                + "} " + super.toString();
+    }
+
+    public boolean tieneDisco(String nombreDisco) {
+        for (Disco disco : discografia) {
+            if (disco.getNombre().equals(nombreDisco)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
