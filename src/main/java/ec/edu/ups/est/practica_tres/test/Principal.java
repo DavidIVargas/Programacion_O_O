@@ -22,7 +22,7 @@ public class Principal {
         int opcion = 0;
 
         while (opcion != 7) {
-            System.out.println("------ MENÚ ------");
+            System.out.println("------- MENÚ -------");
             System.out.println("1. Ingreso de Cantante");
             System.out.println("2. Ingreso de Compositor");
             System.out.println("3. Agregar Clientes");
