@@ -12,9 +12,17 @@ import java.util.List;
  * @author davidvargas
  */
 public class Compositor extends Persona {
+
     private int numeroDeComposiciones;
     private List<Cancion> cancionesTop100Billboard;
     private List<Cantante> clientes;
+
+    public Compositor(int numeroDeComposiciones, List<Cancion> cancionesTop100Billboard, List<Cantante> clientes, int codigo, String nombre, String apellido, int edad, String nacionalidad, double salario) {
+        super(codigo, nombre, apellido, edad, nacionalidad, salario);
+        this.numeroDeComposiciones = numeroDeComposiciones;
+        this.cancionesTop100Billboard = cancionesTop100Billboard;
+        this.clientes = clientes;
+    }
 
     public Compositor(int codigo, String nombre, String apellido, int edad, String nacionalidad, double salario, int numeroDeComposiciones) {
         super(codigo, nombre, apellido, edad, nacionalidad, salario);
@@ -49,8 +57,7 @@ public class Compositor extends Persona {
         return salarioFinal;
     }
 
-    // getters y setters
-
+    // Getters y setters
     public int getNumeroDeComposiciones() {
         return numeroDeComposiciones;
     }
@@ -74,7 +81,6 @@ public class Compositor extends Persona {
     public void setClientes(List<Cantante> clientes) {
         this.clientes = clientes;
     }
-    
 
     @Override
     public String toString() {
@@ -84,5 +90,13 @@ public class Compositor extends Persona {
                 ", clientes=" + clientes +
                 "} " + super.toString();
     }
-}
 
+    public boolean tieneCancion(String nombreCancion) {
+        for (Cancion cancion : cancionesTop100Billboard) {
+            if (cancion.getTitulo().equals(nombreCancion)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
